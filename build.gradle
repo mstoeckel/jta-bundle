@@ -1,0 +1,28 @@
+buildscript {
+	repositories {
+    		jcenter()
+        dependencies {
+    			classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        }
+    }
+}
+
+apply from: "$rootDir/gradle/base.gradle"
+
+dependencies {
+	compile "com.cognodyne.dw:cdi-bundle:$cdiBundleVersion" 
+	compile "org.jboss.narayana.jta:narayana-jta:$narayanaVersion"
+    compile "org.jboss:jboss-transaction-spi:$jbossTxnSpiVersion"
+    compile "org.eclipse.jetty:jetty-plus:$jettyVersion"
+}
+
+bintray {
+	pkg {
+        name = 'jta-bundle'
+        desc = 'Dropwizard jta bundle'
+        labels = ['dropwizard', 'jta', 'bundle']
+        websiteUrl = 'https://github.com/mstoeckel/jta-bundle'
+        issueTrackerUrl = 'https://github.com/mstoeckel/jta-bundle/issues'
+        vcsUrl = 'https://github.com/mstoeckel/jta-bundle.git'
+	}
+}
