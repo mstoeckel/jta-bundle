@@ -10,10 +10,9 @@ buildscript {
 apply from: "$rootDir/gradle/base.gradle"
 
 dependencies {
-	compile "com.cognodyne.dw:cdi-bundle:$cdiBundleVersion" 
+	compile "com.cognodyne.dw:bundle-common:$bundleCommonVersion" 
 	compile "org.jboss.narayana.jta:narayana-jta:$narayanaVersion"
     compile "org.jboss:jboss-transaction-spi:$jbossTxnSpiVersion"
-    compile "org.eclipse.jetty:jetty-plus:$jettyVersion"
 }
 
 bintray {
