@@ -9,7 +9,7 @@ import org.jboss.weld.injection.spi.helpers.AbstractResourceServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cognodyne.dw.cdi.weld.DeployableWeldService;
+import com.cognodyne.dw.common.DeployableWeldService;
 
 public class ResourceInjectionServiceProvider extends AbstractResourceServices implements DeployableWeldService {
     private static final Logger                           logger   = LoggerFactory.getLogger(ResourceInjectionServiceProvider.class);

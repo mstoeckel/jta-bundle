@@ -14,7 +14,8 @@ import org.slf4j.LoggerFactory;
 import com.arjuna.ats.internal.jta.transaction.arjunacore.TransactionManagerImple;
 import com.arjuna.ats.jta.common.JTAEnvironmentBean;
 import com.arjuna.ats.jta.common.jtaPropertyManager;
-import com.cognodyne.dw.cdi.weld.DeployableWeldService;
+import com.cognodyne.dw.common.DeployableWeldService;
+import com.cognodyne.dw.common.JndiSupport;
 
 public class TransactionServiceProvider implements TransactionServices, DeployableWeldService {
     private static final Logger                     logger   = LoggerFactory.getLogger(TransactionServiceProvider.class);
@@ -54,7 +55,6 @@ public class TransactionServiceProvider implements TransactionServices, Deployab
                     try {
                         JndiSupport.bind(jtaEnv.getUserTransactionJNDIContext(), jtaEnv.getUserTransaction());
                         JndiSupport.bind("java:comp/UserTransaction", jtaEnv.getUserTransaction());
-                        new org.eclipse.jetty.plus.jndi.Transaction(jtaEnv.getUserTransaction());
                         JndiSupport.bind(jtaEnv.getTransactionManagerJNDIContext(), jtaEnv.getTransactionManager());
                         JndiSupport.bind(jtaEnv.getTransactionSynchronizationRegistryJNDIContext(), jtaEnv.getTransactionSynchronizationRegistry());
                         logger.info("Successfully intialized {}", this.getClass().getName());
